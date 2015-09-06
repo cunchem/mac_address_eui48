@@ -1,3 +1,5 @@
+# Copyright (C) 2015  Mathieu Cunche <mathieu.cunche@innsa-lyon.fr>
+
 require "./lib/mac_address_eui48.rb"
 require "test/unit"
 

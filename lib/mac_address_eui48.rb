@@ -1,3 +1,6 @@
+
+# Copyright (C) 2015  Mathieu Cunche <mathieu.cunche@innsa-lyon.fr>
+
 require "mac_address_eui48/version"
 require "mac_address_eui48/mac_address"
 require "mac_address_eui48/oui_resolver"
