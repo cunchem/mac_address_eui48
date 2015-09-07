@@ -7,7 +7,6 @@ require "mac_address_eui48/oui_resolver"
 
 
 module MacAddressEui48  
-  OUI_FILE="data/oui.txt"
   
   # MAC address format is hexadecimal characters separated by ':'
   # ex: "AA:BB:CC:DD:EE:FF" or "11:22:33:44:55:66
@@ -31,7 +30,9 @@ module MacAddressEui48
     oui = ""
     mac_array=mac_addr.upcase.split(":")
     prefix = mac_array[0] + "-" + mac_array[1] + "-" + mac_array[2]
-    oui_file = File.open(OUI_FILE)
+
+    path = File.expand_path('../../data/oui.txt', __FILE__)      
+    oui_file = File.open(path)
     oui_file.each_line do |line|
       if (line =~ /.*#{prefix}.*(hex)/) then
         

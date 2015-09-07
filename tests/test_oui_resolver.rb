@@ -1,4 +1,4 @@
-# Copyright (C) 2015  Mathieu Cunche <mathieu.cunche@innsa-lyon.fr>
+# Copyright (C) 2015  Mathieu Cunche <mathieu.cunche@insa-lyon.fr>
 
 require "./lib/mac_address_eui48.rb"
 require "test/unit"
@@ -7,8 +7,7 @@ module MacAddressEui48
   class TestMacAddress < Test::Unit::TestCase
         
     def test_oui_lookup
-      resolver=OuiResolver.new()
-      
+      resolver=OuiResolver.new()      
       assert(resolver.oui_lookup("9C:93:4E:12:34:56") == "Xerox Corporation", "Got [#{resolver.oui_lookup("9C:93:4E:12:34:56")}] expected [Xerox Corporation]")
       assert(resolver.oui_lookup("C4:04:15:12:34:56") == "NETGEAR INC.,")
       assert(resolver.oui_lookup("A4:D1:8C:AB:CD:EF") == "Apple, Inc.")
@@ -34,7 +33,7 @@ module MacAddressEui48
       # test 3: no prefix
       vendor = "ACME Corp."
       result  = resolver.reverse_lookup(vendor)
-      prefixes = []
+      prefixes = nil
       assert((result <=> prefixes) == 0, "Got #{result} instead of #{prefixes}")
 
 
