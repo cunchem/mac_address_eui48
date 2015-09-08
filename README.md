@@ -2,6 +2,7 @@
 
 This is an implementation of MAC address along with tools for OUI lookup and random MAC address generation. It can be used as a Ruby library or through the command line tools. 
 
+The OUI resolver is based on the official OUI file provided by the IEEE [http://standards-oui.ieee.org/oui.txt] and stored in data/.
 
 ## Features
 ### Command line tools
@@ -12,12 +13,25 @@ This is an implementation of MAC address along with tools for OUI lookup and ran
   * Address with registered OUI
   * Address with given OUI
 * oui_lookup.rb: resolve OUI of MAC address
-  * TODO
 
 ### Library 
 
-TODO
 
+* MacAddressEui48::MacAddress
+  * Initialization from Integer, String of MacAddress
+  * Comparison operator
+  * Possibility to iterate over a range of MacAddress
+  * Test for Broadcast address
+  * Flag tests: locally administered, multicast, ...
+
+* MacAddressEui48::OuiResolver	
+  * Lookup: Organization/Vendor from MAC address
+  * Reverse lookup: OUI (MAC prefix) from Organization/Vendor 
+  * Random MAC address generation
+    * Over all space (2^48 values) 
+    * Only within space of registered OUI
+    * Over a specific OUI
+   
 ## Installation
 
 ```ruby
