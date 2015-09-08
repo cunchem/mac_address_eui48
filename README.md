@@ -1,36 +1,65 @@
 # MacAddressEui48
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mac_address_eui48`. To experiment with that code, run `bin/console` for an interactive prompt.
+This is an implementation of MAC address along with tools for OUI lookup and random MAC address generation. It can be used as a Ruby library or through the command line tools. 
 
-TODO: Delete this and the text above, and describe your gem
+
+## Features
+### Command line tools
+
+* gen_mac_address.rb: generate random MAC address
+** Fully random address
+** Generate multiple address at one time
+** Address with registered OUI
+** Address with given OUI
+* oui_lookup.rb: resolve OUI of MAC address
+** TODO
+
+### Library 
+
+TODO
 
 ## Installation
-
-Add this line to your application's Gemfile:
 
 ```ruby
 gem 'mac_address_eui48'
 ```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install mac_address_eui48
-
 ## Usage
 
-TODO: Write usage instructions here
+### Command line tools 
 
+Generation of random MAC address
+```bash
+# fully random address
+$ ./gen_mac_address.rb 
+5A:79:5A:7D:FC:71
+
+# random address in with registered OUI
+$ ./gen_mac_address.rb -r
+00:1C:AE:57:0E:BA
+
+# multiple address
+$ ./gen_mac_address.rb -n 5
+3F:40:DC:4B:CC:EB
+49:23:BC:D4:54:9D
+85:F6:49:BB:CC:47
+33:68:8A:9E:21:57
+42:B6:80:B8:B0:7F
+
+# random mac address from a given OUI (vendor)
+$ ./gen_mac_address.rb -o "Xerox Corporation"
+9C:93:4E:27:2A:16
+```
+
+### Library 
+
+TODO
+
+### Library 
 ## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+TODO
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mac_address_eui48. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/cunchem/mac_address_eui48. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 

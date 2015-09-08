@@ -17,7 +17,7 @@ module MacAddressEui48
     end
     
     def test_to_s
-      string="aa:bb:cc:dd:ee:ff"
+      string="AA:BB:CC:DD:EE:FF"
       mac=MacAddress.new(string)
       assert((mac.to_s <=> string)==0,"failed to_string conversion #{string} #{mac.to_s}")
     end
@@ -63,8 +63,27 @@ module MacAddressEui48
       assert(!mac1.is_broadcast)
       mac2 = MacAddress.new("FF:FF:FF:FF:FF:FF")
       assert(mac2.is_broadcast)
-      
     end
 
+    def test_is_loc_admin
+      mac1= MacAddress.new("02:00:00:00:00:00")
+      assert(mac1.is_loc_admin)
+      assert(!mac1.is_glob_uniq)
+      mac2= MacAddress.new("C4:04:15:12:34:56")
+      assert(!mac2.is_loc_admin)
+      assert(mac2.is_glob_uniq)
+    end
+
+    def test_is_multicast
+      mac1= MacAddress.new("01:00:00:00:00:00")
+      assert(mac1.is_multicast)
+      assert(!mac1.is_unicast)
+      mac2= MacAddress.new("C4:04:15:12:34:56")
+      assert(!mac2.is_multicast)
+      assert(mac2.is_unicast)
+    end
+
+    
+    
   end
 end

@@ -39,7 +39,7 @@ module MacAddressEui48
     
     def random_mac
       i = rand(2**48)
-      return MacAddressEui48::int_to_macaddr(i).upcase
+      return MacAddressEui48::int_to_str_mac(i)
     end
     def random_oui_mac 
       # Some vendors may appear more than once in the OUI table 
@@ -56,10 +56,10 @@ module MacAddressEui48
       end
       
       oui = ouis[rand(ouis.size)]
-      i1 =  MacAddressEui48::macaddr_to_int( oui + ":00:00:00")
+      i1 =  MacAddressEui48::str_mac_to_int( oui + ":00:00:00")
       i2 = rand(2**24)       
       i = i1 + i2
-      return MacAddressEui48::int_to_macaddr(i)
+      return MacAddressEui48::int_to_str_mac(i)
     end   
   end
  

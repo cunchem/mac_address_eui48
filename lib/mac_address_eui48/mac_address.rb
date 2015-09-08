@@ -5,17 +5,18 @@ module MacAddressEui48
   
   class MacAddress
     include Comparable
-    attr_reader :mac_str
-    
+        
     def initialize(arg)
       case arg
       when MacAddress
-        @mac_str = arg.to_s
+        @val = arg.to_i
       when Integer 
-        @mac_str = MacAddressEui48::int_to_macaddr(arg)
+        @val = arg
       when String
+        # String value must be provided as hex char separated by ':'
         if (MacAddressEui48::is_valid_mac(arg)) then 
           @mac_str=arg
+          @val=MacAddressEui48::str_mac_to_int(arg)
         else
           raise "Wrong format for string mac address #{arg}"
         end
@@ -24,39 +25,43 @@ module MacAddressEui48
       end
     end
     
-    
     def to_i
-      return MacAddressEui48::macaddr_to_int(@mac_str)
+      @val
     end
     
     def <=>(other)
-      MacAddressEui48::macaddr_to_int(self.mac_str) <=> MacAddressEui48::macaddr_to_int(other.mac_str)
+      self.to_i <=> other.to_i
     end
     
-    def to_s
-      @mac_str  
+    def to_s(sep=':')
+      MacAddressEui48::int_to_str_mac(@val,sep).upcase
     end
   
     def is_broadcast
-      self.mac_str ==  "FF:FF:FF:FF:FF:FF"
+      #self.to_s ==  "FF:FF:FF:FF:FF:FF"
+      @val == 2**48-1
     end
    
     def is_unicast
-      return !is_multicast
-    end
-    def is_multicast
-      
-    end
-    def is_glob_uniq
-      return !is_loc_admin
-    end
-    def is_loc_admin
-      
+      !is_multicast
     end
     
+    def is_multicast
+      mask = 1 << (5*8)
+      (mask & @val) !=0
+    end
+    
+    def is_glob_uniq
+      !is_loc_admin
+    end
+    
+    def is_loc_admin
+      mask = 2 << (5*8)
+      (mask & @val) !=0 
+    end
 
     def next
-      return MacAddress.new(MacAddressEui48::int_to_macaddr(((self.to_i) +1)%2**48))
+      return MacAddress.new(((self.to_i) +1)%2**48)
     end
     alias_method :succ, :next
     

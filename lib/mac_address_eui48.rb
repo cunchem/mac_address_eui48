@@ -10,19 +10,18 @@ module MacAddressEui48
   
   # MAC address format is hexadecimal characters separated by ':'
   # ex: "AA:BB:CC:DD:EE:FF" or "11:22:33:44:55:66
-
   def MacAddressEui48::is_valid_mac(mac_addr)
     return (mac_addr =~ /^(\h\h:){5}\h\h$/)
   end
   
-  def MacAddressEui48::macaddr_to_int(a)
+  def MacAddressEui48::str_mac_to_int(a)
     return a = a.delete(":").to_i(16)
   end
     
-  def MacAddressEui48::int_to_macaddr(i)
+  def MacAddressEui48::int_to_str_mac(i,sep=':')
     a = i.to_s(16)
     a = a.rjust(12,'0')
-    a = a.insert(10,':').insert(8,':').insert(6,':').insert(4,':').insert(2,':')
+    a = a.insert(10,sep).insert(8,sep).insert(6,sep).insert(4,sep).insert(2,sep)
     return a.upcase 
   end
   

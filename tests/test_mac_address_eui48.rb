@@ -8,7 +8,7 @@ module MacAddressEui48
         
     def test_macaddr_to_int
       (0..10).each do |n|
-        assert(MacAddressEui48::macaddr_to_int(MacAddressEui48::int_to_macaddr(n)) == n )
+        assert(MacAddressEui48::str_mac_to_int(MacAddressEui48::int_to_str_mac(n)) == n )
       end  
     end
     
