@@ -2,7 +2,7 @@
 
 This is an implementation of MAC address along with tools for OUI lookup and random MAC address generation. It can be used as a Ruby library or through the command line tools. 
 
-The OUI resolver is based on the official OUI file provided by the IEEE [http://standards-oui.ieee.org/oui.txt] and stored in data/.
+The OUI resolver is based on the official OUI file provided by the IEEE [[http://standards-oui.ieee.org/oui.txt]]. This file is stored in `data/`.
 
 ## Features
 ### Command line tools
