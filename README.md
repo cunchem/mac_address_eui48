@@ -7,12 +7,12 @@ This is an implementation of MAC address along with tools for OUI lookup and ran
 ### Command line tools
 
 * gen_mac_address.rb: generate random MAC address
-** Fully random address
-** Generate multiple address at one time
-** Address with registered OUI
-** Address with given OUI
+  * Fully random address
+  * Generate multiple address at one time
+  * Address with registered OUI
+  * Address with given OUI
 * oui_lookup.rb: resolve OUI of MAC address
-** TODO
+  * TODO
 
 ### Library 
 
@@ -55,7 +55,7 @@ $ ./gen_mac_address.rb -o "Xerox Corporation"
 
 TODO
 
-### Library 
+
 ## Development
 TODO
 
