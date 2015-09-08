@@ -2,7 +2,7 @@
 
 This is an implementation of MAC address along with tools for OUI lookup and random MAC address generation. It can be used as a Ruby library or through the command line tools. 
 
-The OUI resolver is based on the official OUI file provided by the IEEE [[http://standards-oui.ieee.org/oui.txt]]. This file is stored in `data/`.
+The OUI resolver is based on the official OUI file provided by the IEEE http://standards-oui.ieee.org/oui.txt. This file is stored in `data/`.
 
 ## Features
 ### Command line tools
@@ -20,7 +20,7 @@ The OUI resolver is based on the official OUI file provided by the IEEE [[http:/
 * MacAddressEui48::MacAddress
   * Initialization from Integer, String of MacAddress
   * Comparison operator
-  * Possibility to iterate over a range of MacAddress
+  * Iteration over a range of MacAddress
   * Test for Broadcast address
   * Flag tests: locally administered, multicast, ...
 
@@ -34,8 +34,8 @@ The OUI resolver is based on the official OUI file provided by the IEEE [[http:/
    
 ## Installation
 
-```ruby
-gem 'mac_address_eui48'
+```bash
+gem install mac_address_eui48
 ```
 
 ## Usage
@@ -65,6 +65,12 @@ $ ./gen_mac_address.rb -o "Xerox Corporation"
 9C:93:4E:27:2A:16
 ```
 
+Resolving OUI 
+```bash
+$ ./oui_lookup.rb C4:04:15:12:34:56
+NETGEAR INC.,
+```
+ 
 ### Library 
 
 TODO
